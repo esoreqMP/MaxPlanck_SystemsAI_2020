@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Homes on Reproducible Science and Jupyter Notebook</title>
+    <link>/home/</link>
+    <description>Recent content in Homes on Reproducible Science and Jupyter Notebook</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="/home/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>/home/prerequisites/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/home/prerequisites/</guid>
+      <description>General setup I&amp;rsquo;m assuming you have an activated user account on the HPC. If not please send an e-mail to hpc@gwdg.de asking to activate your account.
+ Check HPC by spawning a session Make sure you have VPN on. And go over to the HPC hub and sign in.
+ Check HPC by spawning a session Start your server. --  Check HPC by spawning a session And spawn a hub session.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/home/bash/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/home/bash/</guid>
+      <description>Some Bash Basics  In this section we will cover how to create custom commands (aliases), allowing you to create shortcuts for a single command or a group of commands. We will also learn how to configure your personal home account on the cluster How to transfer files from and to the cluster Finally how to extend the cluster functionality using modules   Intro   The Bash Shell (Bourne Again SHell), is a command-line interface (CLI).</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/home/bash_advanced/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/home/bash_advanced/</guid>
+      <description>Some Advanced Bash  In this section we will cover how to create custom commands (aliases), allowing you to create shortcuts for a single command or a group of commands. We will also learn how to configure your personal home account on the cluster How to log on the cluster using the terminal And how to transfer files from and to the cluster using rsync   alias  A shell alias is a shortcut to reference a command.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/home/github/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/home/github/</guid>
+      <description>Basics of Version Control (VC)  In this section we will cover what is Version Control Why we need it We will also learn how to install git as our VC system And how to create our first repository to store important configuration files As always here is a good introduction to git from a non-programmer point of view   Why do we need a VC system  Up until now we covered how to work on the cluster, and how to move files from and to the cluster However, this kind of behavior requires you to constantly keep both sides (cluster and home computer) in sync If you also have a Desktop computer tracking what changed and when becomes very hard When we consider working on a project with collaborators this is impossible Luckily enough this problem isn&amp;rsquo;t uncommon and it is simple to solve using a process called version control   What does a VC do?</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/home/bash_functions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/home/bash_functions/</guid>
+      <description>Even More Advanced Bash  In this section we will go over some more advanced Bash concepts We will also cover how to create functions to automate things I will share with you some functions I created to simplify my life in the gwdg cluster If you want to expand your Bash skills this is a good place to start   Conditionals  We previously used the IF statement in our .</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/home/symboliclinks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/home/symboliclinks/</guid>
+      <description>Summary and home assignment  We went on quite a ride this week You learned to do many things Also your cluster account should be looking good The last thing we want to do is gain access to the course shared space   Collaborating with version control  While I advocated for using GitHub as collaboration hub in reality most of Neuroscience research done relies on large data-sets that contain sensitive information Therefore, in this course we will be using a shared space on the cluster rather than a collaborative repository It is also worth noting that using the collaborative part of GitHub requires additional work that I felt was not necessary for our needs However for those who wish to explore this option further the web is full with examples and you have all the right functionality to either join or host such a repository   Collaborating using a shared local space  What we will use instead is a shared space on our scratch disk Please open a terminal on the HPC Jupyter-hub Now cd into /scratch/systemAI/course_2020 This will be our course space   Creating a symbolic link  The shared space is empty now But it contains some hierarchy We will start by creating a symbolic link to the folder on your home directory   Creating a symbolic link  A symbolic link, also known as a symlink or soft link, is a special type of file that points to another file or directory Syntax is dead easy  ln -s {source-path} {symbolic-name}  Goto your home directory create a folder called learning And in it create a symlink to the course material Go to the next slide AFTER you did this   Creating a symbolic link  In order to use the jupyterhub with our shared space we will make a soft link to the course folder that will be accessible on the web interface Jupyterhub has access to the jupyterhub-gwdg folder in your home directory Creating a soft link to our course folder makes the entire folder tree accessible to the web interface  cd ~ &amp;amp;&amp;amp; mkdir ~/jupyterhub-gwdg/learning source=/scratch/systemAI/course_2020 target=~/jupyterhub-gwdg/learning/systemAI_2020 ln -s $source $target  Home assignment  Download (using rsync) the pdf in the papers folder to your personal computer and read it before our meeting.</description>
+    </item>
+    
+  </channel>
+</rss>

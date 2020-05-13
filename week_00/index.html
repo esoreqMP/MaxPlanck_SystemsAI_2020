@@ -1,0 +1,1474 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<meta name="generator" content="Hugo 0.70.0" />
+    <meta charset="utf-8">
+<title>Reproducible Science and Jupyter Notebook</title>
+
+<meta name="author" content="Eyal Soreq">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="/reveal-js/css/reset.css">
+<link rel="stylesheet" href="/reveal-js/css/reveal.css">
+  <link rel="stylesheet" href="/_.min.d233926e3d0280a6decccc076f4c36f47fba065cbdd40039cd88c9a1b771735e.css" id="theme"><link rel="stylesheet" href="/highlight-js/default.min.css">
+    
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+  
+
+    <section>
+
+<section data-shortcode-section>
+<h1 id="reproducible-science-and-jupyter-notebook">Reproducible Science and Jupyter Notebook</h1>
+<ul>
+<li>In this talk, I will go over the key benefits that rise from doing open reproducible science.</li>
+<li>I will also go over the set of open source tools that I will force you to use in this course (and hopefully will continue to use after the course) that make creating reproducible science easier.</li>
+<li>This is by no means an exhaustive list</li>
+<li>And the talk will cover the bare necessities (with some additional tricks)</li>
+</ul>
+</section><section>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<h3 id="at-the-end-of-the-talk-you-should-be-able-to">At the end of the talk, you should be able to:</h3>
+<ol>
+<li>Define what open reproducible science is and (hopefully) understand its importance.</li>
+<li>Know which key tools we will be using to implement our open reproducible science Projects.</li>
+<li>Be able to start experimenting with these tools either on your personal computer or on the <a href="https://info.gwdg.de/docs/doku.php?id=en:services:application_services:high_performance_computing:start">High Performance Cluster (HPC)</a></li>
+</ol>
+</section><section>
+<h2 id="so-what-should-be-open-in-open-science">So What Should be Open in Open science?</h2>
+<ul>
+<li>Everything !!!</li>
+<li>Open science is all about transparency at all levels of the scientific process. In other words making data, methods and findings easy to access, understand, reuse and ultimately extend and improve.</li>
+<li>In other <strong>Reproducible</strong></li>
+</ul>
+</section><section>
+<h2 id="so-what-is-open-reproducible-science">So What is Open Reproducible Science?</h2>
+<ul>
+<li>I think we all agree that one of the fundamental tenets of any science is reproducibility. More specifically, in order to make progress the scientific community should not accept any reporting of a &ldquo;scientific&rdquo; phenomena unless it is reproducible.&rdquo;</li>
+<li>However, in modern data analysis, it is incredibly simple to get something wrong. This is especially true in most modern neuroscience experiments that are composed of many different measuring devices and involve complex pre and post pipelines.</li>
+<li>Furthermore, it is even simpler to get something right but not realise it. The idea for this week is to teach you how to use Jupyter notebook combined with python as a reproducible framework.</li>
+</ul>
+</section><section>
+<h2 id="why-should-we-bother">Why Should We Bother?</h2>
+<ul>
+<li>Reproducibility is crucial for complex projects. Where a team of experts is formed, and each is in charge of a facet of the problem.</li>
+<li>It is also simpler to enforce in teams, as it is crucial in effective Collaboration.</li>
+<li>Furthermore, while neuroscience is a collaborative endeavour, most PhD students will work on specific projects sometimes alone.</li>
+</ul>
+</section><section>
+<h2 id="why-should-you-bother">Why Should You Bother?</h2>
+<ul>
+<li>In this context, it is essential to understand that your collaborator is first and foremost your future self.</li>
+<li>In other words, data projects tend to be revisited, and your future self will be grateful if you create a clear and straightforward analysis project.</li>
+</ul>
+</section><section>
+<h2 id="still-not-convinced">Still not Convinced?</h2>
+<ul>
+<li>As aspiring scientists you should be able to share your work in a way that:
+<ol>
+<li>First allows others to understand what you did</li>
+<li>Then if needed do exactly what you did</li>
+<li>Using the same data you used</li>
+<li>And that this will produce the same result you had.</li>
+</ol>
+</li>
+</ul>
+</section><section>
+<h2 id="final-note-in-this-matter">Final note in this matter?</h2>
+<ul>
+<li>Having a straightforward, transparent notebook will allow future you as well as your peers, supervisors (and students) to make the most of your knowledge, and progress smoothly and quickly to projects that extend, improve and validate your findings.</li>
+</ul>
+</section><section>
+<h2 id="ok-so-how-do-we-start">OK So How Do We Start?</h2>
+<ul>
+<li>First lets go over some technical prerequisites.</li>
+<li>Press on the left arrow to move to the new section</li>
+</ul>
+<section data-shortcode-section>
+</section>
+</section>
+</section>
+
+  
+
+    <section>
+
+<section data-shortcode-section>
+<h2 id="general-setup">General setup</h2>
+<p>I&rsquo;m assuming you have an activated user account on the HPC. If not please send an e-mail to <a href="hpc@gwdg.de">hpc@gwdg.de</a> asking to activate your account.</p>
+</section><section>
+<h2 id="check-hpc-by-spawning-a-session">Check HPC by spawning a session</h2>
+<p>Make sure you have VPN on. And go over to the <a href="https://jupyter-hpc.gwdg.de/hub/">HPC hub</a> and sign in.</p>
+<p><img src="/img/Tutorial_sign_in.png" alt=""></p>
+</section><section>
+<h2 id="check-hpc-by-spawning-a-session-1">Check HPC by spawning a session</h2>
+<h3 id="start-your-server">Start your server.</h3>
+<p><img src="/img/Tutorial_Start_my_server.png" alt=""></p>
+<!-- <p align="center">
+<img src="/img/Tutorial_Start_my_server.png">
+</p> -->
+</section><section>
+<h2 id="check-hpc-by-spawning-a-session-2">Check HPC by spawning a session</h2>
+<h3 id="and-spawn-a-hub-session">And spawn a hub session.</h3>
+<p><img src="/img/Tutorial_Spawn_my_virtual_env.png" alt=""></p>
+</section><section>
+<h2 id="lets-create-a-new-bash-terminal">Lets create a new BASH terminal</h2>
+<h3 id="open-the-new-drop-menu-and-select-terminal">Open the new drop menu and select terminal</h3>
+<p><img src="/img/Tutorial_New_terminal.png" alt=""></p>
+</section><section>
+<h2 id="lets-create-a-new-bash-terminal-1">Lets create a new BASH terminal</h2>
+<h3 id="you-should-have-something-that-looks-like-this">You should have something that looks like this</h3>
+<p><img src="/img/Tutorial_Bash.png" alt=""></p>
+</section><section>
+<h2 id="great-">Great !!</h2>
+<ul>
+<li>Hopefully everything worked for you.</li>
+<li>Now lets use this terminal to go over some Bash basics</li>
+<li>Press on the left arrow to move to the new section</li>
+</ul>
+<section data-shortcode-section>
+</section>
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="some-bash-basics">Some Bash Basics</h1>
+<ul>
+<li>In this section we will cover how to create custom commands (aliases), allowing you to create shortcuts for a single command or a group of commands.</li>
+<li>We will also learn how to configure your personal home account on the cluster</li>
+<li>How to transfer files from and to the cluster</li>
+<li>Finally how to extend the cluster functionality using modules</li>
+</ul>
+</section><section>
+<h1 id="intro">Intro</h1>
+<ul>
+<li>
+<p>The Bash Shell (Bourne Again SHell), is a command-line interface (CLI). Lets go over the most popular commands, and learn how to use them.</p>
+</li>
+<li>
+<p>If you want to extend your understanding you should consider taking <a href="https://www.educative.io/courses/master-the-bash-shell">Learn Bash the Hard Way</a>.</p>
+</li>
+</ul>
+</section><section>
+<h1 id="intro-1">Intro</h1>
+<ul>
+<li>
+<p>However, for our needs the basics we will cover this week should be enough</p>
+</li>
+<li>
+<p>If you just want to know more on a specific issue here are some websites that can be useful:</p>
+<ul>
+<li><a href="https://www.educative.io/blog/bash-shell-command-cheat-sheet">bash-shell-command-cheat-sheet</a></li>
+<li><a href="https://www.tecmint.com/">TecMint</a></li>
+<li><a href="https://www.tldp.org/LDP/abs">Advanced Bash-Scripting Guide</a></li>
+</ul>
+</li>
+<li>
+<p>Finally here is a good <a href="https://devhints.io/bash">Cheat sheet</a> to explore when trying to understand my functions</p>
+</li>
+</ul>
+</section><section>
+<h2 id="bash-basics">BASH Basics</h2>
+<ul>
+<li>Lets go over some important commands and how to use them.</li>
+<li>Almost all commands in bash will have some help option (try it!)</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#24909d">echo</span> --help <span style="color:#999;font-style:italic"># Open the help page of the command</span> </code></pre></div>
+</section><section>
+<h2 id="cdpwd---change-directory-and-print-working-directory">cd,pwd - Change directory and Print working directory</h2>
+<h3 id="examples">Examples</h3>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#24909d">cd</span> Mail <span style="color:#999;font-style:italic"># change the directory</span> 
+<span style="color:#24909d">pwd</span> <span style="color:#999;font-style:italic"># print the current directory.</span> 
+<span style="color:#24909d">cd</span> /  <span style="color:#999;font-style:italic"># change directory to the root directory</span>
+<span style="color:#24909d">cd</span> ~  <span style="color:#999;font-style:italic"># change directory to your home directory</span>
+<span style="color:#24909d">cd</span> dir_root/dir_branch/dir_leaf <span style="color:#999;font-style:italic"># goto leaf dir</span>
+<span style="color:#24909d">cd</span> .. <span style="color:#999;font-style:italic"># go back one level</span> 
+<span style="color:#24909d">cd</span> <span style="color:#ed9d13">&#34;dir name&#34;</span> 
+<span style="color:#999;font-style:italic"># if for some reason you created a folder name with spaces</span> 
+<span style="color:#999;font-style:italic"># (DONT!!!) this is how you call it</span> </code></pre></div>
+</section><section>
+<h2 id="mkdir---create-a-directory">mkdir - Create a directory</h2>
+<p>The mkdir command in UNIX allows users to create directories aka folders.</p>
+<h3 id="examples-1">Examples</h3>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape>mkdir ~/sandbox   
+<span style="color:#999;font-style:italic"># create a folder named sandbox in your home directory</span>
+<span style="color:#24909d">cd</span> ~/sandbox
+mkdir dir_1 dir_2  
+<span style="color:#999;font-style:italic"># create multiple directories</span> 
+mkdir -p dir_root/dir_branch/dir_leaf 
+<span style="color:#999;font-style:italic"># create Folder structure</span> 
+ls -R dir_root/ <span style="color:#999;font-style:italic"># confirm using ls</span>
+mkdir -p dir_root/{dir_b}/{dir_l1,dir_l2} 
+<span style="color:#999;font-style:italic"># This supports complex assignments</span>
+mkdir -vp dir_root/{dir_b1,dir_b2}/{dir_l1,dir_l2} 
+<span style="color:#999;font-style:italic"># v verbosely report terminal assignments</span> </code></pre></div>
+</section><section>
+<h2 id="echo--prints-text-to-the-terminal-window">echo — Prints text to the terminal window</h2>
+<ul>
+<li>The most basic process in any programming language is the ability to out put information.</li>
+<li>The echo command prints text to the terminal window and is typically used in shell scripts and batch files to output status text to the screen or a computer file.</li>
+<li>Echo is also particularly useful for showing the values of environmental variables, which tell the shell how to behave as a user works at the command line or in scripts.</li>
+</ul>
+</section><section>
+<h2 id="echo">echo</h2>
+<h3 id="examples-2">Examples</h3>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#24909d">cd</span> ~/sandbox
+<span style="color:#24909d">echo</span> Some text to print out 
+<span style="color:#999;font-style:italic"># any string after the command will be printed</span> 
+<span style="color:#24909d">echo</span> * 
+<span style="color:#999;font-style:italic">#  Will Print all the files/folder using echo command</span> 
+<span style="color:#24909d">echo</span> *.jpeg 
+<span style="color:#999;font-style:italic">#  Will Print all the files of a specific kind</span>
+<span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;Some text to add to a file&#34;</span> &gt; file  
+<span style="color:#999;font-style:italic"># Use redirect operator &gt; to store output to file</span>
+cat file
+<span style="color:#999;font-style:italic"># the cat command will read and output the files content</span> </code></pre></div>
+</section><section>
+<h2 id="cat--read-a-file-create-a-file-and-concatenate-files">cat — Read a file, create a file, and concatenate files</h2>
+<p>Cat (short for “concatenate“) is one of the more versatile commands and serves three main functions:</p>
+<ul>
+<li>Displaying files</li>
+<li>Combining multiple files</li>
+<li>Creating new files.</li>
+</ul>
+</section><section>
+<h2 id="cat">cat</h2>
+<h3 id="examples-3">Examples</h3>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape>cat file 
+<span style="color:#999;font-style:italic"># Displaying Contents of a File</span>
+cat &gt; file_2 
+<span style="color:#999;font-style:italic"># Allows to write text interactively</span> 
+cat file_2 &gt; file 
+<span style="color:#999;font-style:italic"># It is possible to redirect &gt; to output like echo</span> 
+<span style="color:#999;font-style:italic"># However the above command overwrites the file contents</span> 
+cat file file_1 file_2 
+<span style="color:#999;font-style:italic"># We can also view contents of multiple files</span>
+cat file_1 &gt;&gt; file 
+<span style="color:#999;font-style:italic"># file_1 content will be appended at the end of file</span></code></pre></div>
+</section><section>
+<h2 id="variables-in-bash">Variables in BASH</h2>
+<ul>
+<li>A variable is a temporary store for a piece of information.</li>
+<li>Essentially, all BASH variables are character strings, however, depending on context, it is possible to run arithmetic operations and comparisons on variables.</li>
+<li>As we are not going to write fancy Bash scripts I will not go over arithmetics, however, check this <a href="https://bash.cyberciti.biz/guide/Perform_arithmetic_operations#Arithmetic_Expansion_in_Bash_Shell">link</a> for examples.</li>
+</ul>
+</section><section>
+<h2 id="variables----examples">Variables -  Examples</h2>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#40ffff">a</span> = <span style="color:#3677a9">10</span> <span style="color:#999;font-style:italic"># spaces are not allowed in variable assignment</span>
+<span style="color:#40ffff">a</span>=<span style="color:#3677a9">10</span> <span style="color:#999;font-style:italic"># This will assign the string 10 to a</span> 
+<span style="color:#40ffff">b</span>=a <span style="color:#999;font-style:italic"># Assign the string a to b</span> 
+<span style="color:#24909d">echo</span> <span style="color:#40ffff">$a</span> <span style="color:#999;font-style:italic"># use the $ sign to call</span>
+<span style="color:#40ffff">b</span>=<span style="color:#40ffff">$a</span> <span style="color:#999;font-style:italic"># assign a to b</span> 
+<span style="color:#24909d">let</span> <span style="color:#40ffff">a</span>+=<span style="color:#3677a9">10</span> <span style="color:#999;font-style:italic"># Add ten to a</span> 
+<span style="color:#24909d">echo</span> <span style="color:#40ffff">$a</span> <span style="color:#40ffff">$b</span> <span style="color:#999;font-style:italic"># confirm</span></code></pre></div>
+</section><section>
+<h2 id="ls--list-directory-contents">ls — (List directory contents)</h2>
+<ul>
+<li>Probably the most common command. The <strong>ls</strong> command allows you to quickly view all files within the specified directory.</li>
+<li>Like almost all BASH commands it can be extended by adding different options</li>
+<li>Let&rsquo;s review some useful ones</li>
+</ul>
+</section><section>
+<h2 id="ls--examples">ls — Examples</h2>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape>ls       <span style="color:#999;font-style:italic"># list files and directories in bare format</span> 
+ls -a    <span style="color:#999;font-style:italic"># List all files including hidden file</span>
+ls -F    <span style="color:#999;font-style:italic"># Will distinguish folders from files</span>
+ls -l    <span style="color:#999;font-style:italic"># Shows additional content</span> 
+ls -lh   <span style="color:#999;font-style:italic"># human readable format.</span>
+ls -R    <span style="color:#999;font-style:italic"># Recursively list Sub-Directories</span> 
+ls -1    <span style="color:#999;font-style:italic"># Force output to one column</span> </code></pre></div>
+</section><section>
+<h2 id="cpmv---copy-move-or-rename-files-and-directories">cp,mv - copy, move or rename files and directories</h2>
+<h3 id="examples-4">Examples</h3>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#24909d">cd</span> ~ <span style="color:#999;font-style:italic"># make sure we are home</span> 
+<span style="color:#40ffff">output</span>=dir_root/dir_branch/dir_leaf 
+<span style="color:#999;font-style:italic"># make a variable to store path</span>
+cp file <span style="color:#40ffff">$output</span> <span style="color:#999;font-style:italic"># copy file to path</span>
+mv file_1 <span style="color:#40ffff">$output</span> <span style="color:#999;font-style:italic"># move file_1 to output</span>
+ls <span style="color:#40ffff">$output</span> <span style="color:#999;font-style:italic"># list files in output</span>
+mv file <span style="color:#40ffff">$output</span>/file_renamed 
+<span style="color:#999;font-style:italic"># move file to output and rename it</span> 
+mv -t dir dir_1 dir_2 
+<span style="color:#999;font-style:italic"># move folders to --target-directory (long form of -t)</span>
+cp -R dir <span style="color:#40ffff">$output</span> 
+<span style="color:#999;font-style:italic"># recursively copy folder content to path</span>
+ls -FR <span style="color:#40ffff">$output</span> <span style="color:#999;font-style:italic"># list files in output again</span></code></pre></div>
+</section><section>
+<h2 id="history">history</h2>
+<p>The GNU history command keeps a list of all the other commands that have been run from that terminal session, then allows you to replay or reuse those commands instead of retyping them.</p>
+</section><section>
+<h2 id="history-pipe">history, pipe</h2>
+<p>A pipe is a form of redirection (transfer of standard output to some other destination) that is used in Linux and other Unix-like operating systems to send the output of one command/program/process to another command/program/process for further processing.
+You can make it do so by using the pipe character &lsquo;|&rsquo;.</p>
+</section><section>
+<h2 id="history-pipe-and-grep">history, pipe and grep</h2>
+<p>Global regular expression print (grep for short) is a command-line utility for searching plain-text data sets for lines that match a regular expression. Its name comes from the ed command g/re/p, which has the same effect: doing a global search with the regular expression and printing all matching lines.</p>
+</section><section>
+<h2 id="history-pipe-and-grep---examples">history, pipe and grep - Examples</h2>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#24909d">history</span> <span style="color:#999;font-style:italic"># will print out all the commands you made</span> 
+<span style="color:#24909d">echo</span> <span style="color:#40ffff">$HISTTIMEFORMAT</span>  
+<span style="color:#999;font-style:italic"># HISTTIMEFORMAT controls how history is printed</span> 
+<span style="color:#999;font-style:italic"># %Y-%m-%d %H:%M:%S = Year month day hour minute second</span> 
+<span style="color:#24909d">export</span> <span style="color:#40ffff">HISTTIMEFORMAT</span>=<span style="color:#ed9d13">&#39;&#39;</span> 
+<span style="color:#999;font-style:italic"># we can remove the formating to have only the commands</span> 
+<span style="color:#24909d">history</span> | more 
+<span style="color:#999;font-style:italic"># The | symbol stands for piped commands</span> 
+<span style="color:#24909d">history</span> | grep ls 
+<span style="color:#999;font-style:italic"># Will return any command with ls</span> 
+<span style="color:#24909d">history</span> -c 
+<span style="color:#999;font-style:italic"># Will clear the history file</span> </code></pre></div>
+</section><section>
+<h2 id="rm---remove-files-and-folders">rm - remove files and folders</h2>
+<ul>
+<li>As the name suggests rm command is used to delete or remove files and directories</li>
+<li>If you are new to Bash then you should be very careful when using the rm command</li>
+<li>In linux once you delete the files you can not recover the contents of files and directory</li>
+</ul>
+</section><section>
+<h2 id="rm---examples">rm - Examples</h2>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape>rm file_2 <span style="color:#999;font-style:italic"># delete file</span> 
+mkdir dir_empty
+rm dir_empty 
+<span style="color:#999;font-style:italic"># will fail</span> 
+rm -d dir_empty 
+<span style="color:#999;font-style:italic"># delete folder if it&#39;s empty</span>
+rm -r dir 
+<span style="color:#999;font-style:italic"># recursively delete folder and it&#39;s contents</span> 
+rm -ir dir_root 
+<span style="color:#999;font-style:italic"># recursively delete contents and prompt before every removal</span></code></pre></div>
+</section><section>
+<h2 id="du---disc-usage">du - disc usage</h2>
+<ul>
+<li>The du command, is used to command estimates file_path space usage.</li>
+</ul>
+<h3 id="examples-5">Examples</h3>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape>du -sh ~ 
+<span style="color:#999;font-style:italic"># Human readable format home directory space usage.</span>
+du -sh -- * 
+<span style="color:#999;font-style:italic"># cumulative disk usage of all non-hidden directories</span>
+du -hs <span style="color:#6ab825;font-weight:bold">$(</span>ls -A<span style="color:#6ab825;font-weight:bold">)</span> 
+<span style="color:#999;font-style:italic"># Will include dotfiles (normally hidden from you)</span></code></pre></div>
+</section><section>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>These are the most common commands you are likely to use</li>
+<li>However, during the course we will learn additional ones</li>
+<li>This is a good opportunity to go over the various commands and see that you understood everything</li>
+<li>Also on a personal note, please make note for anything that isn&rsquo;t clear so I can learn from your experience</li>
+<li>Time to make a cup of coffee and take a short break</li>
+<li>When done go to the advanced bash section</li>
+</ul>
+<section data-shortcode-section>
+</section>
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<!-- Add symbolic link part link /scratch/systemAI2020 to local drive-->
+<h1 id="some-advanced-bash">Some Advanced Bash</h1>
+<ul>
+<li>In this section we will cover how to create custom commands (aliases), allowing you to create shortcuts for a single command or a group of commands.</li>
+<li>We will also learn how to configure your personal home account on the cluster</li>
+<li>How to log on the cluster using the terminal</li>
+<li>And how to transfer files from and to the cluster using rsync</li>
+</ul>
+</section>
+<section data-noprocess data-shortcode-slide
+      id="alias">
+<h2 id="alias">alias</h2>
+<ul>
+<li>A shell alias is a shortcut to reference a command. It can be used to avoid typing long commands or as a means to correct incorrect input. For common patterns it can reduce keystrokes and improve efficiency.</li>
+<li>Think about complex commands that you use a lot, or even simple commands with common used options.</li>
+<li>The format is simple and I will go over some of my favorite (Copy the ones you like)</li>
+</ul>
+</section>
+<section data-noprocess data-shortcode-slide
+      id="alias">
+<h2 id="alias---examples">alias - examples</h2>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#24909d">alias</span> <span style="color:#999;font-style:italic"># list all current aliases</span>
+<span style="color:#24909d">alias</span> <span style="color:#40ffff">rm</span>=<span style="color:#ed9d13">&#39;rm -i&#39;</span> <span style="color:#999;font-style:italic"># Will ask permission before deleting files.</span>
+<span style="color:#24909d">alias</span> <span style="color:#40ffff">cp</span>=<span style="color:#ed9d13">&#39;cp -i&#39;</span> <span style="color:#999;font-style:italic"># Will ask permission before overwriting files.</span>
+<span style="color:#24909d">alias</span> <span style="color:#40ffff">mv</span>=<span style="color:#ed9d13">&#39;mv -i&#39;</span> <span style="color:#999;font-style:italic"># Will ask permission before overwriting files.</span>
+<span style="color:#24909d">alias</span> <span style="color:#40ffff">cpv</span>=<span style="color:#ed9d13">&#39;rsync -ah --info=progress2&#39;</span> <span style="color:#999;font-style:italic"># a fancy copy</span>
+<span style="color:#24909d">alias</span> <span style="color:#40ffff">sr</span>=<span style="color:#ed9d13">&#39;sort -hr&#39;</span> <span style="color:#999;font-style:italic"># sort reverse.</span></code></pre></div>
+</section><section>
+<h2 id="alias---examples--cont">alias - examples  (cont.)</h2>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#24909d">alias</span> <span style="color:#40ffff">mkdir</span>=<span style="color:#ed9d13">&#39;mkdir -p&#39;</span>
+<span style="color:#24909d">alias</span> <span style="color:#40ffff">h</span>=<span style="color:#ed9d13">&#39;history&#39;</span>
+<span style="color:#24909d">alias</span> <span style="color:#40ffff">hg</span>=<span style="color:#ed9d13">&#39;history|grep&#39;</span>
+<span style="color:#24909d">alias</span> ..=<span style="color:#ed9d13">&#39;cd ..&#39;</span>
+<span style="color:#24909d">alias</span> <span style="color:#40ffff">du</span>=<span style="color:#ed9d13">&#39;du -kh&#39;</span>    
+<span style="color:#24909d">alias</span> <span style="color:#40ffff">dt</span>=<span style="color:#ed9d13">&#39;du -sh * | sr&#39;</span></code></pre></div>
+</section><section>
+<h2 id="alias---examples--cont-1">alias - examples  (cont.)</h2>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#24909d">alias</span> <span style="color:#40ffff">ls</span>=<span style="color:#ed9d13">&#39;ls -h --color&#39;</span>
+<span style="color:#24909d">alias</span> <span style="color:#40ffff">ll</span>=<span style="color:#ed9d13">&#34;ls -lv --group-directories-first&#34;</span>
+<span style="color:#24909d">alias</span> <span style="color:#40ffff">lm</span>=<span style="color:#ed9d13">&#39;ll | more&#39;</span>       <span style="color:#999;font-style:italic">#  Pipe through &#39;more&#39;</span>
+<span style="color:#24909d">alias</span> <span style="color:#40ffff">lr</span>=<span style="color:#ed9d13">&#39;ll -R&#39;</span>           <span style="color:#999;font-style:italic">#  Recursive ls.</span>
+<span style="color:#24909d">alias</span> <span style="color:#40ffff">la</span>=<span style="color:#ed9d13">&#39;ll -A&#39;</span>           <span style="color:#999;font-style:italic">#  Show hidden files.</span>
+<span style="color:#24909d">alias</span> <span style="color:#40ffff">lx</span>=<span style="color:#ed9d13">&#39;ll -XB&#39;</span>          <span style="color:#999;font-style:italic">#  Sort by extension.</span>
+<span style="color:#24909d">alias</span> <span style="color:#40ffff">lk</span>=<span style="color:#ed9d13">&#39;ll -Sr  | sr&#39;</span>    <span style="color:#999;font-style:italic">#  Sort by size, biggest first.</span>
+<span style="color:#24909d">alias</span> <span style="color:#40ffff">lt</span>=<span style="color:#ed9d13">&#39;ll -tr  | sr&#39;</span>    <span style="color:#999;font-style:italic">#  Sort by date, most recent first.</span></code></pre></div>
+</section><section>
+<h2 id="dotfile">.dotfile</h2>
+<ul>
+<li>If you followed so far you should be able to do the following:</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#24909d">cd</span> ~ <span style="color:#999;font-style:italic"># go to home dir</span>
+ls <span style="color:#999;font-style:italic"># list files</span> 
+la <span style="color:#999;font-style:italic"># use our new flashy alias to list files</span> </code></pre></div>
+<ul>
+<li>The two list should be different, with the latter containing dotfiles, that are normally hidden.</li>
+<li>Dotfiles are used by different programs to store important information that dramatically changes your system (therefore handle with care).</li>
+</ul>
+</section><section>
+<h2 id="profile">.profile</h2>
+<ul>
+<li>A <em>.profile</em> file stores user specific environment and startup programs configurations and is loaded each time a shell is created.</li>
+<li>In the GWDG HPC you don&rsquo;t have a .profile file by default.</li>
+<li>Let&rsquo;s create it and add into it some crucial code.</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape>nano ~/.profile 
+<span style="color:#999;font-style:italic"># will create the empty .profile and open a text editor</span></code></pre></div>
+</section><section>
+<h2 id="profile-1">.profile</h2>
+<ul>
+<li>This should look like this</li>
+</ul>
+<p><img src="/img/Tutorial_nano.png" alt=""></p>
+</section><section>
+<h2 id="profile-2">.profile</h2>
+<ul>
+<li>Copy and paste this piece of code and close and save using CTRL+X</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#6ab825;font-weight:bold">if</span> [ -f /etc/bashrc ]; <span style="color:#6ab825;font-weight:bold">then</span>
+    . /etc/bashrc <span style="color:#999;font-style:italic"># --&gt; source global /etc/bashrc, if present.</span>
+<span style="color:#6ab825;font-weight:bold">fi</span>
+<span style="color:#6ab825;font-weight:bold">if</span> [ -f . ~/.bashrc ]; <span style="color:#6ab825;font-weight:bold">then</span>
+    . ~/.bashrc <span style="color:#999;font-style:italic"># --&gt; source local ~/.bashrc, if present.</span>
+<span style="color:#6ab825;font-weight:bold">fi</span>    </code></pre></div>
+</section><section>
+<h2 id="bashrc">.bashrc</h2>
+<ul>
+<li>
+<p>What we just did was to tell the cluster to source (i.e. load into memory) both global (/etc/bashrc) and local .bashrc files every time a bash shell is created.</p>
+</li>
+<li>
+<p>Lets open our local .bashrc file and add some functionality to it.</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape>nano ~/.bashrc </code></pre></div>
+</section><section>
+<h2 id="bashrc-1">.bashrc</h2>
+<ul>
+<li>So now we are going to create a conditional statement that will source some files to memory</li>
+<li>The conditional statement below will only run if the file exists</li>
+<li>Using a dot before a file is shorthand to source command</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#24909d">export</span> <span style="color:#40ffff">PATH</span>=<span style="color:#40ffff">$HOME</span>/bin:<span style="color:#40ffff">$PATH</span> <span style="color:#999;font-style:italic"># Add local bin to $PATH</span> 
+<span style="color:#6ab825;font-weight:bold">if</span> [ -f ~/.bash_aliases ]; <span style="color:#6ab825;font-weight:bold">then</span>
+    . ~/.bash_aliases   <span style="color:#999;font-style:italic"># --&gt; source local aliases if present.</span>
+<span style="color:#6ab825;font-weight:bold">fi</span></code></pre></div>
+</section><section>
+<h2 id="bash_aliases">.bash_aliases</h2>
+<ul>
+<li>We already know what aliases are.</li>
+<li>However, it is important to understand that the aliases you created will only exist as long as the shell is open.</li>
+<li>For them to be present any time you log on to the cluster we need to source them every time.</li>
+<li>The code we just wrote will source the file .bash_aliases if it exists whenever you open a shell.</li>
+<li>So let&rsquo;s create this file and append two aliases</li>
+<li>Feel free to use nano and copy over as many aliases if you like</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape>touch ~/.bash_aliases  <span style="color:#999;font-style:italic"># create the file</span> 
+<span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;alias ls=&#39;ls -h --color&#39;&#34;</span> &gt;&gt; ~/.bash_aliases 
+<span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;alias hg=&#39;history|grep&#39;&#34;</span> &gt;&gt; ~/.bash_aliases </code></pre></div>
+</section><section>
+<h2 id="ssh">ssh</h2>
+<ul>
+<li>To verify that this works we need to exit the terminal or alternatively open a new one.</li>
+<li>We could just use the web interface to spawn a new terminal</li>
+<li>Alternatively we could use Secure Shell (ssh) to log on to the cluster from our personal computer</li>
+<li>This is important as some times we would like to copy data to and from the cluster and the simplest way to achieve that is by using a terminal.</li>
+<li>Go over to <a href="https://info.gwdg.de/docs/doku.php?id=en:services:application_services:high_performance_computing:connect_with_ssh">CONNECT WITH SSH</a> and follow the instructions there.</li>
+</ul>
+</section>
+<section data-noprocess data-shortcode-slide
+      id="ssh_login">
+<h2 id="ssh-key">ssh Key</h2>
+<ul>
+<li>To simplify connectivity between computers we use an Rivest–Shamir–Adleman (rsa) key which creates a two key system to allow secure data transmission (and avoid needing a password)</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#999;font-style:italic"># On your personal computer generate your rsa</span> 
+ssh-keygen -t rsa 
+<span style="color:#999;font-style:italic"># Copy it over to the cluster</span> 
+ssh-copy-id &lt;user_id&gt;@gwdu101.gwdg.de 
+<span style="color:#999;font-style:italic"># Check by login in</span> 
+ssh  &lt;user_id&gt;@gwdu101.gwdg.de
+<span style="color:#999;font-style:italic"># And log out</span> 
+<span style="color:#24909d">logout</span> </code></pre></div>
+</section>
+<section data-noprocess data-shortcode-slide
+      id="rsync">
+<h2 id="rsync">rsync</h2>
+<ul>
+<li>Rsync is a fast and extraordinarily versatile file copying tool.</li>
+<li>We are going to learn how to use it with the following steps:
+<ul>
+<li>Copy to your personal computer your .bash_aliases file</li>
+<li>Edit it locally (using any software you like)</li>
+<li>Transfer it back and overwrite the previous copy</li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h2 id="rsync---pull-a-file-from-the-remote-server">rsync - pull a file from the remote server</h2>
+<ul>
+<li>Lets copy our file from the cluster - this is called pulling a file</li>
+<li>Open a terminal in your personal computer, create and goto your own sandbox folder</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape>mkdir ~/sandbox
+<span style="color:#24909d">cd</span> ~/sandbox
+rsync &lt;user_id&gt;@gwdu101.gwdg.de:.bash_aliases .bash_aliases
+cat .bash_aliases</code></pre></div>
+</section><section>
+<h2 id="rsync---push-a-file-to-the-remote-server">rsync - push a file to the remote server</h2>
+<ul>
+<li>Add a new alias to your file</li>
+<li>Then push the file to your home directory and overwrite to old one</li>
+<li>The push syntax is identical to the pull with the source and destination flipped</li>
+<li>We will confirm by passing a command to the cluster using ssh</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;alias la=&#39;ll -A&#39;&#34;</span> &gt;&gt; .bash_aliases 
+rsync .bash_aliases &lt;user_id&gt;@gwdu101.gwdg.de:.bash_aliases 
+ssh  esoreq@gwdu101.gwdg.de <span style="color:#ed9d13">&#34;cat ~/.bash_aliases&#34;</span></code></pre></div>
+</section><section>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>In this section we covered more advanced topics
+<ul>
+<li>We learned to log on to the cluster using ssh</li>
+<li>We created aliases to simplify our workflow</li>
+<li>And learned to copy from and to the cluster</li>
+</ul>
+</li>
+<li>As you progress in your understanding you will find that interacting with the cluster is most efficient via the terminal.</li>
+<li>However, in terms of reproducibility (and especially for beginners) it is better to use the Jupyter framework we will cover shortly</li>
+<li>Time to take a short break and move to setting up version control</li>
+</ul>
+<section data-shortcode-section>
+</section>
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="basics-of-version-control-vc">Basics of Version Control (VC)</h1>
+<ul>
+<li>In this section we will cover what is Version Control</li>
+<li>Why we need it</li>
+<li>We will also learn how to install git as our VC system</li>
+<li>And how to create our first repository to store important configuration files</li>
+<li>As always <a href="https://blog.scottlowe.org/2015/01/14/non-programmer-git-intro/">here</a> is a good introduction to git from a non-programmer point of view</li>
+</ul>
+</section><section>
+<h2 id="why-do-we-need-a-vc-system">Why do we need a VC system</h2>
+<ul>
+<li>Up until now we covered how to work on the cluster, and how to move files from and to the cluster</li>
+<li>However, this kind of behavior requires you to constantly keep both sides (cluster and home computer) in sync</li>
+<li>If you also have a Desktop computer tracking what changed and when becomes very hard</li>
+<li>When we consider working on a project with collaborators this is impossible</li>
+<li>Luckily enough this problem isn&rsquo;t uncommon and it is simple to solve using a process called version control</li>
+</ul>
+</section><section>
+<h2 id="what-does-a-vc-do">What does a VC do?</h2>
+<ul>
+<li>Version control is a system that simplifies managing and tracking changes made to content of a project</li>
+<li>In this course we will learn how to use a tool called global information tracker (git for short)</li>
+<li>And will rely on the service of <a href="https://en.wikipedia.org/wiki/GitHub">GitHub</a> as our online repositories providers.</li>
+<li>This is because it is free of charge and easy to learn and use.</li>
+<li>If you don&rsquo;t have an account please press on <a href="https://github.com/join">join GitHub</a> and follow the instructions</li>
+<li>Also <a href="https://gist.github.com/derhuerst/1b15ff4652a867391f03">install GitHub</a> on your local computer.</li>
+</ul>
+</section><section>
+<h2 id="what-is-a-repository">What is a repository?</h2>
+<ul>
+<li>A repository is a central location in which data is stored and managed.</li>
+<li>Git can be viewed as a method to control, manage and document a projects evolution</li>
+<li>Project evolution is composed of
+<ul>
+<li>Files (i.e. content)</li>
+<li>Directories (i.e. hierarchy)</li>
+<li>Changes across time (i.e. history)</li>
+<li>Users (i.e. contribution)</li>
+</ul>
+</li>
+<li>When you create a new repository a hidden dot folder named .git is created where that data is stored.</li>
+</ul>
+</section><section>
+<h2 id="is-git-installed-on-the-cluster">Is git installed on the Cluster?</h2>
+<ul>
+<li>Well the short answer is no!</li>
+<li>We will have to install it ourselves</li>
+<li>Unfortunately this is not as simple as setting it on your personal computer</li>
+<li>This is because we don&rsquo;t have administrator rights on the cluster</li>
+<li>However we can use a process called compilation that will allow us to use open-source code to create a functional program</li>
+<li>As most of you are lacking advanced programmatic skills (at the moment) I made the instructions as clear as I could.</li>
+<li>If you follow them to the letter I&rsquo;m sure we will manage</li>
+</ul>
+</section><section>
+<h2 id="log-onto-the-cluster">Log onto the Cluster</h2>
+<ul>
+<li>In order to install things we need to be on the cluster</li>
+<li>So open a terminal on your personal computer</li>
+<li>And use ssh to connect to the cluster</li>
+<li><a href="#ssh_login">This is how we did it previously</a></li>
+</ul>
+</section><section>
+<h2 id="download-git">Download git</h2>
+<ul>
+<li>We will create a temporary folder on our home directory</li>
+<li>Then we will use <code>wget</code> to download a compressed snapshot of the recent version of the git program (tar ball)</li>
+<li>We will use tar (a compression program similar to zip) to uncompress the tar ball</li>
+<li>Finally we will go in the directory</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape>mkdir ~/src <span style="color:#999;font-style:italic"># create a src dir</span> 
+<span style="color:#24909d">cd</span> ~/src <span style="color:#999;font-style:italic"># go into it</span>
+<span style="color:#999;font-style:italic"># Download a version of GitHub</span>
+wget  https://github.com/git/git/archive/v2.26.2.tar.gz
+tar -xzvf * <span style="color:#999;font-style:italic"># Expand the tar file (tarball)</span>
+<span style="color:#24909d">cd</span> git-2.26.2/ <span style="color:#999;font-style:italic"># And goto the folder</span> 
+</code></pre></div></section><section>
+<h2 id="compiling-git-on-the-cluster">Compiling git on the cluster</h2>
+<ul>
+<li>Compiling a program can be a frustrating experience</li>
+<li>However, in this case this is highly unlikely</li>
+<li>We use a process that is called <code>make</code> which will build the software specifically for the install location you want</li>
+<li>In our case we are compiling to the bin folder in your home directory</li>
+<li>The following <code>make install</code> will install the program in that location</li>
+<li>Notice the use of double &amp; to chain commands</li>
+<li>Running this will take a while and spit many words</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape>make &amp;&amp; make install
+git --version <span style="color:#999;font-style:italic"># confirm that this worked</span> 
+</code></pre></div></section><section>
+<h2 id="generate-a-new-rsa-key">Generate a new rsa key</h2>
+<ul>
+<li>Now we need to generate a new rsa key</li>
+<li>Previously we generated an rsa key from our home computer to simplify the login process to the cluster</li>
+<li>We will now use the same process to simplify interaction to and from GitHub</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape>ssh-keygen -t rsa -b <span style="color:#3677a9">4096</span> -C &lt;the_email@you_used_on_github.com&gt;
+<span style="color:#24909d">eval</span> <span style="color:#ed9d13">&#34;</span><span style="color:#6ab825;font-weight:bold">$(</span>ssh-agent -s<span style="color:#6ab825;font-weight:bold">)</span><span style="color:#ed9d13">&#34;</span> <span style="color:#999;font-style:italic"># Start the ssh-agent in the background.</span>
+ssh-add ~/.ssh/id_rsa <span style="color:#999;font-style:italic"># Add your SSH private key to the ssh-agent</span>
+cat ~/.ssh/id_rsa.pub <span style="color:#999;font-style:italic"># Print your key and copy it</span>
+</code></pre></div></section><section>
+<h2 id="setting-up-ssh-key-access-to-github">Setting up ssh key access to Github</h2>
+<p>Now you need to go over to this <a href="https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account">LINK</a> and follow the instructions to the letter.</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#24909d">cd</span> ~ 
+rm -rf src <span style="color:#999;font-style:italic"># Delete the src folder</span> 
+<span style="color:#999;font-style:italic"># Add some information to you account</span> 
+git config --global user.name <span style="color:#ed9d13">&#34;Your git user Name&#34;</span> 
+git config --global user.email <span style="color:#ed9d13">&#34;&lt;your mail&gt;@mpi-mail.mpg.de&#34;</span>
+<span style="color:#999;font-style:italic"># Open ~/.ssh/config</span>
+nano ~/.ssh/config
+<span style="color:#999;font-style:italic"># Copy the following line to the TOP of the file</span>
+IgnoreUnknown AddKeysToAgent,UseKeychain
+<span style="color:#999;font-style:italic"># Now check your connection to your GitHub repository</span> 
+ssh -T git@github.com
+</code></pre></div></section><section>
+<h2 id="setting-up-cluster-access-to-github">Setting up cluster access to Github</h2>
+<ul>
+<li>We are almost ready to use git and GitHub</li>
+<li>We only need to setup the cluster to enable us to create and delete repositories from the command line</li>
+<li>To do this we need to generate a token which is a way to extend normal passwords by associating different permissions for each token</li>
+</ul>
+</section><section>
+<h2 id="creating-an-api-token-on-github">Creating an api token on Github</h2>
+<ul>
+<li>Please follow this <a href="https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line">link</a> to create a personal access token for the command line</li>
+<li>Or alternatively go <a href="https://github.com/settings/tokens">here</a> if you don&rsquo;t need the tutorial to generate a new token</li>
+<li>Make sure to tick the following boxes:
+<ul>
+<li><code>Delete repositories</code></li>
+<li><code>repo</code></li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h2 id="a-small-detour-to-talk-about-security-and-permissions">A small detour to talk about security and permissions</h2>
+<ul>
+<li>The token you just created is a scary thing as it allows anyone with it to delete your repositories</li>
+<li>You should treat it and any password on the cluster with care</li>
+<li>One way to do that is to separate between the configuration files and sensitive information</li>
+<li>In linux any file or folder will have permission settings</li>
+</ul>
+</section><section>
+<h2 id="why-are-permissions-important-and-useful">Why are permissions important and useful?</h2>
+<ul>
+<li>Permissions control who can have access to a file or folder</li>
+<li>And more importantly what kind of access is granted</li>
+<li>A good example is experimental raw data</li>
+<li>We will want many people to have read access</li>
+<li>But other than the creator of the data no one should have write access</li>
+</ul>
+</section><section>
+<h2 id="basics-of-permissions">Basics of permissions</h2>
+<ul>
+<li>Using <code>ls -l ~/.bashrc</code> give the following :
+<img src="/img/Tutorial_bashrc_permissions.png" alt=""></li>
+<li>Let&rsquo;s unpack the bottom line from right to left</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>/usr/users/esoreq/.bashrc</code></td>
+<td align="left">full path name</td>
+</tr>
+<tr>
+<td align="left"><code>May 12 08:43</code></td>
+<td align="left">The <strong>last</strong> modification time</td>
+</tr>
+<tr>
+<td align="left"><code>172</code></td>
+<td align="left">File size in bytes</td>
+</tr>
+<tr>
+<td align="left"><code>MLNP</code></td>
+<td align="left">Group name</td>
+</tr>
+<tr>
+<td align="left"><code>esoreq</code></td>
+<td align="left">Owner name</td>
+</tr>
+<tr>
+<td align="left"><code>1</code></td>
+<td align="left">Number of links</td>
+</tr>
+<tr>
+<td align="left"><code>-rw-------</code></td>
+<td align="left">Permissions</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+</section><section>
+<h2 id="basics-of-permissions-1">Basics of permissions</h2>
+<ul>
+<li>Permission settings are grouped in a string of characters (-, r, w, x)</li>
+<li>The characters r, w, and x stand for <strong>read</strong>, <strong>write</strong>, and <strong>execute</strong>.
+classified into four sections:
+<ul>
+<li><span style="color:GOLD">-</span>rwxrwxrwx - File type has three possibilities:
+<ul>
+<li>regular file (–)</li>
+<li>a directory (d)</li>
+<li>or a link (i)</li>
+</ul>
+</li>
+<li>-<span style="color:GOLD">rwx</span>rwxrwx - File permission of the user (owner)</li>
+<li>-rwx<span style="color:GOLD">rwx</span>rwx - File permission of the owner’s group</li>
+<li>-rwxrwx<span style="color:GOLD">rwx</span> - File permission of other users</li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h2 id="changing-permissions">Changing permissions</h2>
+<ul>
+<li>Any Linux user, will at some point need to modify the permission settings of a file/directory.</li>
+<li>This can be done using the <code>chmod</code> command.</li>
+<li>The basic syntax is:</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape>chmod [permission] [file_name]
+<span style="color:#999;font-style:italic"># one way that is the simplest to remember</span> 
+chmod <span style="color:#40ffff">u</span>=rwx,g=rwx,o=rwx [file_name]
+</code></pre></div><ul>
+<li>rwx stand for r(ead),w(rite) and (e)x(ecute)</li>
+<li>and ugo stand for u(ser), g(roup) and o(ther)</li>
+</ul>
+</section><section>
+<h2 id="changing-permissions-using-the-numeric-mode">Changing permissions using the numeric mode</h2>
+<ul>
+<li>Instead of letters, the numeric format represents privileges with numbers:
+<ul>
+<li>r(ead) has the value of 4</li>
+<li>w(rite) has the value of 2</li>
+<li>(e)x(ecute) has the value of 1</li>
+<li>no permission has the value of 0</li>
+</ul>
+</li>
+<li>Privileges are summed up and depicted by one number.</li>
+<li>The permission is compressed to three (3) numbers</li>
+<li>Each representing the summation of privileges for each category (user, group, owner).</li>
+</ul>
+</section><section>
+<h2 id="changing-permissions-using-the-numeric-mode-1">Changing permissions using the numeric mode</h2>
+<ul>
+<li>
+<p>Therefore, the possibilities are:</p>
+<ul>
+<li>7 = read, write, and execute permission</li>
+<li>6 = read and write privileges</li>
+<li>5 = read and execute privileges</li>
+<li>4 = read privileges</li>
+</ul>
+</li>
+<li>
+<p>And in practice the basic syntax changes to:</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape>chmod <span style="color:#3677a9">750</span> [file_name] <span style="color:#999;font-style:italic"># -rwxr-x---</span>
+chmod <span style="color:#3677a9">400</span> [file_name] <span style="color:#999;font-style:italic"># -r--------</span>
+</code></pre></div></section><section>
+<h2 id="back-to-practicals">Back to practicals</h2>
+<ul>
+<li>To have our passwords protected we will create a personal folder</li>
+<li>Make sure only we have access to it</li>
+<li>Create a file called passwords</li>
+<li>Append our github token into it</li>
+<li>And add a line to our bashrc file to source this variable on login</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#40ffff">GIT_TOKEN</span>=&lt;the token&gt;
+mkdir ~/personal &amp;&amp; <span style="color:#24909d">cd</span> ~/personal
+chmod <span style="color:#3677a9">700</span> ~/personal <span style="color:#999;font-style:italic"># Only you will have access</span>
+touch passwords
+<span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;GIT_TOKEN=</span><span style="color:#40ffff">$GIT_TOKEN</span><span style="color:#ed9d13">&#34;</span> &gt;&gt; passwords
+<span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;. ~/personal/passwords&#34;</span> &gt;&gt; ~/.bashrc
+. ~/.bashrc
+</code></pre></div><ul>
+<li>If all worked well you should have a working git on the cluster</li>
+</ul>
+</section><section>
+<h2 id="creating-your-first-repository">Creating your first repository</h2>
+<ul>
+<li>Let&rsquo;s create a repository that stores the various configuration files we just created</li>
+<li>This is not solely for the experience of creating a repository,</li>
+<li>It is useful to have when moving from one position to another</li>
+<li>And allows you to share your work with other people in your lab</li>
+</ul>
+</section><section>
+<h2 id="initializing-a-git-folder">Initializing a git folder</h2>
+<ul>
+<li>The <code>git init</code> function is used to create the hidden <code>.git</code> folder within your repository</li>
+<li>When we run <code>git init [foldername]</code> we create a new folder with the <code>.git</code> folder inside</li>
+<li>Alternatively we can initialize an existing folder by going into the folder and running <code>git init</code> without any other options</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape>git init <span style="color:#40ffff">$HOME</span>/dotfiles/ <span style="color:#999;font-style:italic"># make a git initialized folder</span> 
+</code></pre></div></section><section>
+<h2 id="add-some-content">Add some content</h2>
+<ul>
+<li>We will need to add some content (i.e. files and folders) into our repository</li>
+<li>Good practice is to always include a Readme.md markdown file</li>
+<li>Markdown is a rich text syntax that we will learn next week</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#999;font-style:italic"># copy over your dot files</span>
+cp .bash_aliases .bashrc .profile .bash_profile ~/dotfiles/
+ls -af dotfiles/.??*  <span style="color:#999;font-style:italic"># confirm that they were copied</span> 
+<span style="color:#24909d">cd</span> ~/dotfiles <span style="color:#999;font-style:italic"># goto the folder</span> 
+touch Readme.md <span style="color:#999;font-style:italic"># create a readme file (good practice)</span>
+<span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;A repository for dot configuration files&#34;</span> &gt;&gt; Readme.md
+</code></pre></div></section><section>
+<h2 id="create-a-remote-repository">Create a remote repository</h2>
+<ul>
+<li>We now have a local folder with some files inside</li>
+<li>We want to have a matching repository on the GitHub site</li>
+<li>We could just use the web interface to manually create our dotfiles repository</li>
+<li>An alternative way would be to create it programmatically</li>
+<li>Go to this <a href="https://developer.github.com/v3/guides/getting-started/#create-a-repository">link</a> to gain a deeper understanding of this issue</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#40ffff">AUTH</span>=<span style="color:#ed9d13">&#34;Authorization: token </span><span style="color:#40ffff">$GIT_TOKEN</span><span style="color:#ed9d13">&#34;</span>
+<span style="color:#40ffff">DATA</span>=<span style="color:#ed9d13">&#39;{&#34;name&#34;:&#34;dotfiles&#34;,&#34;private&#34;: true}&#39;</span> <span style="color:#999;font-style:italic"># create a JSON structure</span>
+curl -H <span style="color:#ed9d13">&#34;</span><span style="color:#40ffff">$AUTH</span><span style="color:#ed9d13">&#34;</span> https://api.github.com/user/repos -d <span style="color:#ed9d13">&#34;</span><span style="color:#40ffff">$DATA</span><span style="color:#ed9d13">&#34;</span>
+</code></pre></div></section><section>
+<h2 id="git-basics---working-with-remotes">Git Basics - Working with Remotes</h2>
+<ul>
+<li>Final required setup is to tell our local directory where it&rsquo;s remote counterpart is located</li>
+<li>Again to understand this concept further you can (but don&rsquo;t have to) go <a href="https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes">here</a></li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#999;font-style:italic"># Tell the folder where the remote repository is</span>
+git remote add origin git@github.com:&lt;git_user_name&gt;/dotfiles.git
+</code></pre></div></section><section>
+<h2 id="lets-add-some-files-to-our-repository">Let&rsquo;s add some files to our repository</h2>
+<ul>
+<li>You should now have an empty repository on GitHub with a link resembling this <code>https://github.com/&lt;username&gt;/dotfiles</code></li>
+<li>Goto the link (change the user name to your git account) and confirm that it is empty</li>
+<li>We want to tell git which files to upload to the remote folder</li>
+<li>Let&rsquo;s add files with the <code>add</code> command</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape>git add .bashrc <span style="color:#999;font-style:italic"># adding a single file</span>
+git add --all <span style="color:#999;font-style:italic"># To add everything in your directory</span>
+</code></pre></div></section><section>
+<h2 id="lets-commit-and-push-files-to-the-remote-repository">Let&rsquo;s commit and push files to the remote repository</h2>
+<ul>
+<li>Recall that git is much more than a method to backup files and structure of a project</li>
+<li>The more important aspect of git is tracking the <strong>evolution</strong> of the project</li>
+<li>Which mean that we can add a file or files multiple times</li>
+<li>Committing is the process of adding meta information about the current changes made to the repository</li>
+</ul>
+</section><section>
+<h2 id="lets-commit-and-push-files-to-the-remote-repository-1">Let&rsquo;s commit and push files to the remote repository</h2>
+<ul>
+<li>In practice, we want a short (50 char) sentence describing what changes you made to the content</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#999;font-style:italic"># Make nano your default editor</span>  
+<span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;export EDITOR=&#39;nano&#39;&#34;</span> &gt;&gt; ~/.bashrc
+. ~/.bashrc 
+<span style="color:#999;font-style:italic"># Tell git we want to commit and add why</span> 
+git commit -m <span style="color:#ed9d13">&#34;updating dotfiles on </span><span style="color:#6ab825;font-weight:bold">$(</span>date -u<span style="color:#6ab825;font-weight:bold">)</span><span style="color:#ed9d13">&#34;</span>
+<span style="color:#999;font-style:italic"># Push our files to the web</span>
+git push -u origin master
+</code></pre></div></section><section>
+<h2 id="go-to-your-new-repository">Go to your new repository</h2>
+<ul>
+<li>Use the web interface to change one of your files</li>
+<li>One option is to add some of the aliases I showed you to the .bash_aliases file</li>
+<li>Here is a <a href="#alias">link</a> to the relevant slide</li>
+<li>It is much easier to edit these kinds on the web (or on your local computer)</li>
+<li>Now we will pull the updated repository back to the cluster</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#24909d">cd</span> ~/dotfiles
+git status
+git pull origin master
+</code></pre></div><ul>
+<li>You should now have an updated .bash_aliases on your cluster</li>
+</ul>
+</section><section>
+<h2 id="final-step-for-this-week">Final step for this week</h2>
+<ul>
+<li>Please send me an email with the email you have on your github account</li>
+<li>This should be addressed to <a href="mailto:eyal.soreq@mpi-mail.mpg.de">eyal.soreq@mpi-mail.mpg.de</a></li>
+<li>The topic should be add me as a collaborator to the course github</li>
+<li>See you online</li>
+</ul>
+</section><section>
+<h2 id="congratulations-you-are-the-proud-owner-of-a-dotfiles-repository">Congratulations you are the proud owner of a <code>dotfiles</code> repository</h2>
+<ul>
+<li>This was a cool but annoying process</li>
+<li>Next we will cover how to collaborate to a repository you don&rsquo;t own</li>
+<li>After that we will revisit other important git commands and end this weeks material</li>
+<li>Take a well earned break and move forward when ready</li>
+</ul>
+<section data-shortcode-section>
+</section>
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="even-more-advanced-bash">Even More Advanced Bash</h1>
+<ul>
+<li>In this section we will go over some more advanced Bash concepts</li>
+<li>We will also cover how to create functions to automate things</li>
+<li>I will share with you some functions I created to simplify my life in the gwdg cluster</li>
+<li>If you want to expand your Bash skills <a href="https://www.tldp.org/LDP/abs/html/abs-guide.html">this</a> is a good place to start</li>
+</ul>
+</section><section>
+<h2 id="conditionals">Conditionals</h2>
+<ul>
+<li>We previously used the <code>IF</code> statement in our <code>.bashrc</code> file.</li>
+<li>The most basic form of conditionals is:</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#6ab825;font-weight:bold">if</span> [condition is true] <span style="color:#6ab825;font-weight:bold">then</span> [<span style="color:#6ab825;font-weight:bold">do</span> something]. 
+</code></pre></div><ul>
+<li>We can extend this by adding <code>else</code></li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#6ab825;font-weight:bold">if</span> [condition is true] 
+<span style="color:#6ab825;font-weight:bold">then</span> 
+    [<span style="color:#6ab825;font-weight:bold">do</span> something] 
+<span style="color:#6ab825;font-weight:bold">else</span> [condition is false] 
+<span style="color:#6ab825;font-weight:bold">then</span> 
+    [<span style="color:#6ab825;font-weight:bold">do</span> something <span style="color:#6ab825;font-weight:bold">else</span> ]. 
+</code></pre></div></section><section>
+<h2 id="conditionals-1">Conditionals</h2>
+<ul>
+<li>Using Bash syntax (i.e. the set of rules that defines the combinations of symbols that are considered to be a correctly structured and therefore usable code)</li>
+<li>Our previous example will look like this:</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#6ab825;font-weight:bold">if</span><span style="color:#ed9d13">`</span> [expression]; <span style="color:#6ab825;font-weight:bold">then</span> 
+    [<span style="color:#6ab825;font-weight:bold">do</span> something] 
+<span style="color:#6ab825;font-weight:bold">else</span> 
+    [<span style="color:#6ab825;font-weight:bold">do</span> something <span style="color:#6ab825;font-weight:bold">else</span>] 
+<span style="color:#6ab825;font-weight:bold">fi</span>
+</code></pre></div></section><section>
+<h2 id="conditionals-2">Conditionals</h2>
+<ul>
+<li>This can be extended even further using else if which allows us to add conditions and in fact create hierarchy.</li>
+<li>Consider the following program</li>
+<li>Try to understand this and goto the next slide for a breakdown</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#40ffff">cTime</span>=<span style="color:#6ab825;font-weight:bold">$(</span>date +%H<span style="color:#6ab825;font-weight:bold">)</span>
+<span style="color:#6ab825;font-weight:bold">if</span> [ <span style="color:#40ffff">$cTime</span> -gt <span style="color:#3677a9">06</span> -a <span style="color:#40ffff">$cTime</span> -le <span style="color:#3677a9">12</span> ]; <span style="color:#6ab825;font-weight:bold">then</span>
+    <span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;Good Morning&#34;</span>
+<span style="color:#6ab825;font-weight:bold">elif</span> [ <span style="color:#40ffff">$cTime</span> -gt <span style="color:#3677a9">12</span> -a <span style="color:#40ffff">$cTime</span> -le <span style="color:#3677a9">18</span> ]; <span style="color:#6ab825;font-weight:bold">then</span>
+    <span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;Good Afternoon&#34;</span>
+<span style="color:#6ab825;font-weight:bold">else</span>
+    <span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;Good night&#34;</span>
+<span style="color:#6ab825;font-weight:bold">fi</span>
+</code></pre></div></section><section>
+<h2 id="lets-unpack">Let&rsquo;s unpack</h2>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>cTime=$(date +%H)</code></td>
+<td align="left">store the current hour in a variable</td>
+</tr>
+<tr>
+<td align="left"><code>IF</code></td>
+<td align="left">Start the conditional statement</td>
+</tr>
+<tr>
+<td align="left"><code>$cTime -gt 06</code></td>
+<td align="left">Check if time is greater than 6</td>
+</tr>
+<tr>
+<td align="left"><code>-a</code></td>
+<td align="left">logical AND</td>
+</tr>
+<tr>
+<td align="left"><code>$cTime -le 12</code></td>
+<td align="left">less or equal to 12</td>
+</tr>
+<tr>
+<td align="left"><code>if true</code></td>
+<td align="left"><code>echo &quot;Good Morning&quot;</code></td>
+</tr>
+<tr>
+<td align="left"><code>ELSE IF</code></td>
+<td align="left">Another conditional statement</td>
+</tr>
+<tr>
+<td align="left"><code>cTime &gt; 12 &amp; cTime &lt;= 18</code></td>
+<td align="left">Same as above</td>
+</tr>
+<tr>
+<td align="left"><code>if true</code></td>
+<td align="left"><code>echo &quot;Good Afternoon&quot;</code></td>
+</tr>
+<tr>
+<td align="left"><code>ELSE</code></td>
+<td align="left"><code>i.e. cTime &gt; 18 &amp; cTime &lt;= 6</code></td>
+</tr>
+<tr>
+<td align="left"><code>if both are false</code></td>
+<td align="left"><code>echo &quot;Good Afternoon&quot;</code></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+</section><section>
+<h2 id="making-this-into-a-function-is-dead-simple">Making this into a function is dead simple</h2>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#6ab825;font-weight:bold">function</span> greeting {
+<span style="color:#40ffff">cTime</span>=<span style="color:#6ab825;font-weight:bold">$(</span>date +%H<span style="color:#6ab825;font-weight:bold">)</span>
+<span style="color:#6ab825;font-weight:bold">if</span> [ <span style="color:#40ffff">$cTime</span> -gt <span style="color:#3677a9">06</span> -a <span style="color:#40ffff">$cTime</span> -le <span style="color:#3677a9">12</span> ]; <span style="color:#6ab825;font-weight:bold">then</span>
+    <span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;Good Morning&#34;</span>
+<span style="color:#6ab825;font-weight:bold">elif</span> [ <span style="color:#40ffff">$cTime</span> -gt <span style="color:#3677a9">12</span> -a <span style="color:#40ffff">$cTime</span> -le <span style="color:#3677a9">18</span> ]; <span style="color:#6ab825;font-weight:bold">then</span>
+    <span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;Good Afternoon&#34;</span>
+<span style="color:#6ab825;font-weight:bold">else</span>
+    <span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;Good night&#34;</span>
+<span style="color:#6ab825;font-weight:bold">fi</span>;
+}
+</code></pre></div></section><section>
+<h2 id="we-can-also-add-variables">We can also add variables</h2>
+<ul>
+<li>The dollar $ sign with a number will capture variables that our function can use</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#6ab825;font-weight:bold">function</span> greeting {
+<span style="color:#40ffff">cTime</span>=<span style="color:#6ab825;font-weight:bold">$(</span>date +%H<span style="color:#6ab825;font-weight:bold">)</span>
+<span style="color:#6ab825;font-weight:bold">if</span> [ <span style="color:#40ffff">$cTime</span> -gt <span style="color:#3677a9">06</span> -a <span style="color:#40ffff">$cTime</span> -le <span style="color:#3677a9">12</span> ]; <span style="color:#6ab825;font-weight:bold">then</span>
+    <span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;Good Morning </span><span style="color:#40ffff">$1</span><span style="color:#ed9d13">&#34;</span>
+<span style="color:#6ab825;font-weight:bold">elif</span> [ <span style="color:#40ffff">$cTime</span> -gt <span style="color:#3677a9">12</span> -a <span style="color:#40ffff">$cTime</span> -le <span style="color:#3677a9">18</span> ]; <span style="color:#6ab825;font-weight:bold">then</span>
+    <span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;Good Afternoon </span><span style="color:#40ffff">$1</span><span style="color:#ed9d13">&#34;</span>
+<span style="color:#6ab825;font-weight:bold">else</span>
+    <span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;Good night </span><span style="color:#40ffff">$1</span><span style="color:#ed9d13">&#34;</span>
+<span style="color:#6ab825;font-weight:bold">fi</span>;
+}
+greeting <span style="color:#ed9d13">&#34;Your Name&#34;</span> <span style="color:#999;font-style:italic"># will add a name as a variable</span> 
+</code></pre></div></section><section>
+<h2 id="bash_functions">.bash_functions</h2>
+<ul>
+<li>Like the aliases we want to simplify our life (and reduce typing) by creating functions that take anything that we will use often and convert it into a function.</li>
+<li>And we obviously want these functions to be there anytime we log into the cluster</li>
+<li>Let&rsquo;s create a .bash_functions file and make it load on login</li>
+<li>Any useful function should go in this file</li>
+<li>Try to do this on your own and go to the next slide and see my example</li>
+</ul>
+</section><section>
+<h2 id="bash_functions-1">.bash_functions</h2>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape>touch ~/.bash_functions <span style="color:#999;font-style:italic"># create a dot functions file</span> 
+<span style="color:#999;font-style:italic"># now add this to ~/.bashrc file to source when you login</span>
+<span style="color:#6ab825;font-weight:bold">if</span> [ -f ~/.bash_functions ]; <span style="color:#6ab825;font-weight:bold">then</span>
+    . ~/.bash_functions   <span style="color:#999;font-style:italic"># --&gt; source local functions if present.</span>
+<span style="color:#6ab825;font-weight:bold">fi</span>
+</code></pre></div></section><section>
+<h2 id="no-lets-go-over-some-of-my-most-useful-functions">No let&rsquo;s go over some of my most useful functions</h2>
+<ul>
+<li>Function mcd will create a directory and then immediately move into that directory.</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#999;font-style:italic"># Create a directory and move into it</span>
+<span style="color:#6ab825;font-weight:bold">function</span>  mcd {
+    mkdir -p <span style="color:#40ffff">$1</span>
+    <span style="color:#24909d">cd</span> <span style="color:#40ffff">$1</span>
+}
+</code></pre></div></section><section>
+<h2 id="function-sp---step-up">function sp - step up</h2>
+<ul>
+<li>This one will step up in the directory hierarchy the specified number of steps</li>
+<li>Again try to see what and how I do things here</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#999;font-style:italic"># Step up the folder tree $1 times</span>  
+<span style="color:#6ab825;font-weight:bold">function</span> sp {
+<span style="color:#6ab825;font-weight:bold">if</span> [ -z <span style="color:#ed9d13">&#34;</span><span style="color:#40ffff">$1</span><span style="color:#ed9d13">&#34;</span> ]; <span style="color:#6ab825;font-weight:bold">then</span>
+    <span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;You forgot to give a number!&#34;</span>
+<span style="color:#6ab825;font-weight:bold">elif</span> [ <span style="color:#40ffff">$1</span> -eq <span style="color:#40ffff">$1</span> ]; <span style="color:#6ab825;font-weight:bold">then</span>
+    <span style="color:#6ab825;font-weight:bold">if</span> [ <span style="color:#40ffff">$1</span> -gt <span style="color:#3677a9">9</span> -o <span style="color:#40ffff">$1</span> -lt <span style="color:#3677a9">1</span> ]; <span style="color:#6ab825;font-weight:bold">then</span>
+        <span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;</span><span style="color:#40ffff">$1</span><span style="color:#ed9d13"> is not a valid variable&#34;</span>
+    <span style="color:#6ab825;font-weight:bold">else</span>
+        <span style="color:#6ab825;font-weight:bold">for</span> i in <span style="color:#6ab825;font-weight:bold">$(</span>seq <span style="color:#3677a9">1</span> <span style="color:#40ffff">$1</span><span style="color:#6ab825;font-weight:bold">)</span>; <span style="color:#6ab825;font-weight:bold">do</span>
+            <span style="color:#24909d">cd</span> ..
+        <span style="color:#6ab825;font-weight:bold">done</span>;
+    <span style="color:#6ab825;font-weight:bold">fi</span>;
+<span style="color:#6ab825;font-weight:bold">fi</span>;
+}
+</code></pre></div></section><section>
+<h2 id="function-pull---simplify-git-pull">function pull - simplify git pull</h2>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#999;font-style:italic"># will go to a git folder pull an updated version and return to origin</span>
+<span style="color:#6ab825;font-weight:bold">function</span> pull {
+  <span style="color:#6ab825;font-weight:bold">if</span> [ ! -z <span style="color:#ed9d13">&#34;</span><span style="color:#40ffff">$1</span><span style="color:#ed9d13">&#34;</span> ]; <span style="color:#6ab825;font-weight:bold">then</span>
+    <span style="color:#40ffff">origin</span>=<span style="color:#40ffff">$PWD</span>
+    <span style="color:#24909d">cd</span> <span style="color:#40ffff">$1</span>  
+    git pull origin master
+    <span style="color:#24909d">cd</span> <span style="color:#40ffff">$origin</span>
+  <span style="color:#6ab825;font-weight:bold">else</span>
+    git pull origin master
+  <span style="color:#6ab825;font-weight:bold">fi</span>
+}
+</code></pre></div></section><section>
+<h2 id="function-push---simplify-git-push">function push - simplify git push</h2>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#999;font-style:italic"># will go to a git folder push a committed folder and return to origin</span>
+<span style="color:#6ab825;font-weight:bold">function</span> push {
+  <span style="color:#6ab825;font-weight:bold">if</span> [ ! -z <span style="color:#ed9d13">&#34;</span><span style="color:#40ffff">$1</span><span style="color:#ed9d13">&#34;</span> ]; <span style="color:#6ab825;font-weight:bold">then</span>
+    <span style="color:#40ffff">origin</span>=<span style="color:#40ffff">$PWD</span>
+    <span style="color:#24909d">cd</span> <span style="color:#40ffff">$1</span>  
+    git push origin master
+    <span style="color:#24909d">cd</span> <span style="color:#40ffff">$origin</span>
+  <span style="color:#6ab825;font-weight:bold">else</span>
+    git push origin master
+  <span style="color:#6ab825;font-weight:bold">fi</span>
+}
+</code></pre></div></section><section>
+<h2 id="function-commit---simplify-git-commit">function commit - simplify git commit</h2>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#999;font-style:italic"># will go to a git folder</span> 
+<span style="color:#999;font-style:italic"># Add all files, commit them and push to remote</span>  
+<span style="color:#6ab825;font-weight:bold">function</span> commit {
+  <span style="color:#6ab825;font-weight:bold">if</span> [ ! -z <span style="color:#ed9d13">&#34;</span><span style="color:#40ffff">$1</span><span style="color:#ed9d13">&#34;</span> ]; <span style="color:#6ab825;font-weight:bold">then</span>
+    <span style="color:#40ffff">origin</span>=<span style="color:#40ffff">$PWD</span>
+    <span style="color:#24909d">cd</span> <span style="color:#40ffff">$1</span>
+    git add --all 
+    <span style="color:#6ab825;font-weight:bold">if</span> [ ! -z <span style="color:#ed9d13">&#34;</span><span style="color:#40ffff">$2</span><span style="color:#ed9d13">&#34;</span>] ; <span style="color:#6ab825;font-weight:bold">then</span>
+        git commit -m <span style="color:#40ffff">$2</span>
+    <span style="color:#6ab825;font-weight:bold">else</span>         
+        git commit -m <span style="color:#ed9d13">&#34;routine update on </span><span style="color:#6ab825;font-weight:bold">$(</span>date -u<span style="color:#6ab825;font-weight:bold">)</span><span style="color:#ed9d13">&#34;</span> 
+    <span style="color:#6ab825;font-weight:bold">fi</span>    
+    git push origin master
+    <span style="color:#24909d">cd</span> <span style="color:#40ffff">$origin</span>
+  <span style="color:#6ab825;font-weight:bold">else</span>
+    <span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;This functions requires some input&#34;</span>
+  <span style="color:#6ab825;font-weight:bold">fi</span>
+}
+</code></pre></div></section><section>
+<h2 id="function-remote---simplify-git-remote">function remote - simplify git remote</h2>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#999;font-style:italic"># Create a new repository on GitHub</span> 
+<span style="color:#999;font-style:italic"># Syntax newRepo $repo_name $GIT_USER $GIT_TOKEN</span>
+<span style="color:#6ab825;font-weight:bold">function</span> remote {
+  <span style="color:#6ab825;font-weight:bold">if</span> [ ! -z <span style="color:#ed9d13">&#34;</span><span style="color:#40ffff">$1</span><span style="color:#ed9d13">&#34;</span> -a ! -z <span style="color:#ed9d13">&#34;</span><span style="color:#40ffff">$2</span><span style="color:#ed9d13">&#34;</span> ]; <span style="color:#6ab825;font-weight:bold">then</span>
+    <span style="color:#40ffff">REPO</span>=git@github.com:<span style="color:#40ffff">$1</span>/<span style="color:#40ffff">$2</span>.git
+    git remote add origin <span style="color:#40ffff">$REPO</span>
+  <span style="color:#6ab825;font-weight:bold">else</span>
+    <span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;Give username and repository name&#34;</span>
+  <span style="color:#6ab825;font-weight:bold">fi</span>
+}
+</code></pre></div></section><section>
+<h2 id="function-newrepo---simplify-new-git-repository-creation">function newRepo - simplify new git repository creation</h2>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#999;font-style:italic"># Create a new repository on GitHub</span> 
+<span style="color:#999;font-style:italic"># Syntax newRepo $repo_name $GIT_USER $GIT_TOKEN</span>
+<span style="color:#6ab825;font-weight:bold">function</span> newRepo {
+  <span style="color:#6ab825;font-weight:bold">if</span> [ -z <span style="color:#40ffff">$1</span> -a -z <span style="color:#40ffff">$2</span> -a -z <span style="color:#40ffff">$3</span> ]; <span style="color:#6ab825;font-weight:bold">then</span>
+    <span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;You need to give your repository a name&#34;</span>
+  <span style="color:#6ab825;font-weight:bold">else</span>
+    mcd <span style="color:#40ffff">$1</span>   <span style="color:#999;font-style:italic"># create and goto the folder</span>
+    git init <span style="color:#999;font-style:italic"># make a git initialized folder</span> 
+    <span style="color:#40ffff">AUTH</span>=<span style="color:#ed9d13">&#34;Authorization: token </span><span style="color:#40ffff">$3</span><span style="color:#ed9d13">&#34;</span>
+    <span style="color:#40ffff">DATA</span>=<span style="color:#6ab825;font-weight:bold">$(</span><span style="color:#24909d">printf</span> <span style="color:#ed9d13">&#39;{&#34;name&#34;:&#34;%s&#34;}&#39;</span> <span style="color:#40ffff">$1</span><span style="color:#6ab825;font-weight:bold">)</span>
+    <span style="color:#40ffff">API</span>=<span style="color:#ed9d13">&#34;https://api.github.com/user/repos&#34;</span>
+    curl -H <span style="color:#ed9d13">&#34;</span><span style="color:#40ffff">$AUTH</span><span style="color:#ed9d13">&#34;</span> https://api.github.com/user/repos -d <span style="color:#ed9d13">&#34;</span><span style="color:#40ffff">$DATA</span><span style="color:#ed9d13">&#34;</span>
+    remote <span style="color:#40ffff">$2</span> <span style="color:#40ffff">$1</span> 
+  <span style="color:#6ab825;font-weight:bold">fi</span>
+}
+</code></pre></div></section><section>
+<h2 id="function-delrepo---simplify-git-repository-deletion">function delRepo - simplify git repository deletion</h2>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#999;font-style:italic"># Delete a repository on GitHub</span> 
+<span style="color:#999;font-style:italic"># Syntax delRepo $repo_name $GIT_TOKEN $GIT_USER</span>  
+<span style="color:#6ab825;font-weight:bold">function</span> delRepo {
+  <span style="color:#6ab825;font-weight:bold">if</span> [ -z <span style="color:#40ffff">$1</span> -a -z <span style="color:#40ffff">$2</span> -a -z <span style="color:#40ffff">$3</span> ]; <span style="color:#6ab825;font-weight:bold">then</span>
+    <span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;You need to give your repository a name&#34;</span>
+  <span style="color:#6ab825;font-weight:bold">else</span>
+    <span style="color:#40ffff">AUTH</span>=<span style="color:#ed9d13">&#34;Authorization: token </span><span style="color:#40ffff">$2</span><span style="color:#ed9d13">&#34;</span>
+    curl -X DELETE -H <span style="color:#ed9d13">&#34;</span><span style="color:#40ffff">$AUTH</span><span style="color:#ed9d13">&#34;</span> https://api.github.com/repos/<span style="color:#40ffff">$3</span>/<span style="color:#40ffff">$1</span> 
+    rm -rf ~/github/<span style="color:#40ffff">$1</span>
+  <span style="color:#6ab825;font-weight:bold">fi</span>
+}
+</code></pre></div></section><section>
+<h2 id="function-clone---simplify-git-repository-cloning">function clone - simplify git repository cloning</h2>
+<ul>
+<li>A clone is a local copy of some remote repository</li>
+<li>We want our clones to be in one tidy place</li>
+<li>For me its a folder called github</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#999;font-style:italic"># make sure all cloned repositories are stored in one neat place</span>
+<span style="color:#6ab825;font-weight:bold">function</span> clone {
+  <span style="color:#6ab825;font-weight:bold">if</span> [ -z <span style="color:#40ffff">$1</span> ]; <span style="color:#6ab825;font-weight:bold">then</span>
+    <span style="color:#24909d">echo</span> <span style="color:#ed9d13">&#34;You need to give a git url&#34;</span>
+  <span style="color:#6ab825;font-weight:bold">else</span>
+    <span style="color:#40ffff">origin</span>=<span style="color:#40ffff">$PWD</span>
+    <span style="color:#6ab825;font-weight:bold">if</span> [ -z <span style="color:#40ffff">$2</span> ]; <span style="color:#6ab825;font-weight:bold">then</span>
+        <span style="color:#24909d">cd</span> ~/github
+    <span style="color:#6ab825;font-weight:bold">else</span> 
+        <span style="color:#24909d">cd</span> <span style="color:#40ffff">$2</span>
+    <span style="color:#6ab825;font-weight:bold">fi</span>
+    git clone <span style="color:#40ffff">$1</span>
+    <span style="color:#24909d">cd</span> <span style="color:#40ffff">$origin</span>
+  <span style="color:#6ab825;font-weight:bold">fi</span>
+}
+</code></pre></div></section><section>
+<h2 id="can-anybody-push-files-to-my-repository-on-github">Can anybody push files to my repository on github?</h2>
+<ul>
+<li>Nobody can push directly to your repository if you are not already granting them write access</li>
+<li>This is true even if your repository isn&rsquo;t private</li>
+<li>A private repository simply means that only approved users can see on-line content</li>
+<li>The process of contributing to a public repository in GitHub starts by forking the repository</li>
+<li>For those interested <a href="https://blog.scottlowe.org/2015/01/27/using-fork-branch-git-workflow/">here is nice summary</a></li>
+<li>In this course we will not require such process instead we will use a shared space on the cluster.</li>
+</ul>
+</section><section>
+<h2 id="symbolic-links-in-linux">Symbolic links in linux</h2>
+<p>/scratch/systemAI/course_2020</p>
+</section><section>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>Ok this almost sums up your introduction to Bash and the cluster</li>
+<li>During the course we will probably add a few more aliases and functions</li>
+<li>This is a good opportunity to go over the various commands and see that you understood everything</li>
+<li>Also on a personal note, please make note for anything that isn&rsquo;t clear so I can learn from your experience</li>
+<li>When you are ready press on the right arrow for the final section and your home assignment</li>
+</ul>
+<section data-shortcode-section>
+</section>
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="summary-and-home-assignment">Summary and home assignment</h1>
+<ul>
+<li>We went on quite a ride this week</li>
+<li>You learned to do many things</li>
+<li>Also your cluster account should be looking good</li>
+<li>The last thing we want to do is gain access to the course shared space</li>
+</ul>
+</section><section>
+<h1 id="collaborating-with-version-control">Collaborating with version control</h1>
+<ul>
+<li>While I advocated for using GitHub as collaboration hub in reality most of Neuroscience research done relies on large data-sets that contain sensitive information</li>
+<li>Therefore, in this course we will be using a shared space on the cluster rather than a collaborative repository</li>
+<li>It is also worth noting that using the collaborative part of GitHub requires additional work that I felt was not necessary for our needs</li>
+<li>However for those who wish to explore this option further the web is full with examples and you have all the right functionality to either join or host such a repository</li>
+</ul>
+</section><section>
+<h1 id="collaborating-using-a-shared-local-space">Collaborating using a shared local space</h1>
+<ul>
+<li>What we will use instead is a shared space on our scratch disk</li>
+<li>Please open a terminal on the <a href="https://jupyter-hpc.gwdg.de/">HPC Jupyter-hub</a></li>
+<li>Now cd into <code>/scratch/systemAI/course_2020</code></li>
+<li>This will be our course space</li>
+</ul>
+</section><section>
+<h1 id="creating-a-symbolic-link">Creating a symbolic link</h1>
+<ul>
+<li>The shared space is empty now</li>
+<li>But it contains some hierarchy</li>
+<li>We will start by creating a symbolic link to the folder on your home directory</li>
+</ul>
+</section><section>
+<h1 id="creating-a-symbolic-link-1">Creating a symbolic link</h1>
+<ul>
+<li>A symbolic link, also known as a symlink or soft link, is a special type of file that points to another file or directory</li>
+<li>Syntax is dead easy</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape>ln -s {source-path} {symbolic-name}
+</code></pre></div><ul>
+<li>Goto your home directory create a folder called learning</li>
+<li>And in it create a symlink to the course material</li>
+<li>Go to the next slide <strong>AFTER</strong> you did this</li>
+</ul>
+</section><section>
+<h1 id="creating-a-symbolic-link-2">Creating a symbolic link</h1>
+<ul>
+<li>In order to use the jupyterhub with our shared space we will make a soft link to the course folder that will be accessible on the web interface</li>
+<li>Jupyterhub has access to the jupyterhub-gwdg folder in your home directory</li>
+<li>Creating a soft link to our course folder makes the entire folder tree accessible to the web interface</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="nohighlight" data-noescape><span style="color:#24909d">cd</span> ~ &amp;&amp; mkdir ~/jupyterhub-gwdg/learning
+<span style="color:#40ffff">source</span>=/scratch/systemAI/course_2020
+<span style="color:#40ffff">target</span>=~/jupyterhub-gwdg/learning/systemAI_2020
+ln -s  <span style="color:#40ffff">$source</span> <span style="color:#40ffff">$target</span>
+</code></pre></div></section><section>
+<h1 id="home-assignment">Home assignment</h1>
+<ol>
+<li>Download (using <a href="#rsync">rsync</a>) the pdf in the papers folder to your personal computer and read it before our meeting.</li>
+<li>Goto the week_00 folder under notebook and create a folder with your name</li>
+<li>Upload (using <a href="#rsync">rsync</a>) to that folder your portrait as</li>
+<li>Finally navigate to your folder and use the web interface to create a text file named <yourname>_profile.md</li>
+</ol>
+</section><section>
+<h1 id="_profilemd">_profile.md</h1>
+<ul>
+<li>In this file I want you to add the following information
+<ol>
+<li>Introduce yourself
+<ol>
+<li>Name</li>
+<li>Hobbies</li>
+<li>What is your favorite movie.</li>
+</ol>
+</li>
+<li>Why did you choose to enroll in this program</li>
+<li>What is the most important skill you hope to learn in this course.</li>
+<li>What is your academic background</li>
+</ol>
+</li>
+</ul>
+</section><section>
+<h1 id="thats-it-for-this-hpc-boot-camp-week">That&rsquo;s it for this HPC boot camp week</h1>
+<div class="centered_image">
+<img src="http://phdcomics.com/comics/archive/phd102402s.gif">
+</div>
+<h1 id="next-week-will-be-covering">Next week will be covering</h1>
+<h1 id="python-and-jupyter-nootbook">Python and Jupyter nootbook</h1>
+<section data-shortcode-section>
+</section>
+</section>
+</section>
+
+</div>
+      
+
+    </div>
+<script type="text/javascript" src=/reveal-hugo/object-assign.js></script>
+
+<a href="/reveal-js/css/print/" id="print-location" style="display: none;"></a>
+<script type="text/javascript">
+  var printLocationElement = document.getElementById('print-location');
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = printLocationElement.href + (window.location.search.match(/print-pdf/gi) ? 'pdf.css' : 'paper.css');
+  document.getElementsByTagName('head')[0].appendChild(link);
+</script>
+
+<script type="application/json" id="reveal-hugo-site-params">{"history":true}</script>
+<script type="application/json" id="reveal-hugo-page-params">{"custom_theme":"custom-theme.scss","custom_theme_compile":true,"margin":0.1,"max_scale":1.5,"min_scale":0.2,"slide_number":true}</script>
+
+<script src="/reveal-js/js/reveal.js"></script>
+
+<script type="text/javascript">
+  
+  
+  function camelize(map) {
+    if (map) {
+      Object.keys(map).forEach(function(k) {
+        newK = k.replace(/(\_\w)/g, function(m) { return m[1].toUpperCase() });
+        if (newK != k) {
+          map[newK] = map[k];
+          delete map[k];
+        }
+      });
+    }
+    return map;
+  }
+  
+  var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
+  var revealHugoSiteParams = JSON.parse(document.getElementById('reveal-hugo-site-params').innerHTML);
+  var revealHugoPageParams = JSON.parse(document.getElementById('reveal-hugo-page-params').innerHTML);
+  
+  var options = Object.assign({},
+    camelize(revealHugoDefaults),
+    camelize(revealHugoSiteParams),
+    camelize(revealHugoPageParams));
+  Reveal.initialize(options);
+</script>
+
+
+  
+  
+  <script type="text/javascript" src="/reveal-js/plugin/markdown/marked.js"></script>
+  
+  <script type="text/javascript" src="/reveal-js/plugin/markdown/markdown.js"></script>
+  
+  <script type="text/javascript" src="/reveal-js/plugin/highlight/highlight.js"></script>
+  
+  <script type="text/javascript" src="/reveal-js/plugin/zoom-js/zoom.js"></script>
+  
+  
+  <script type="text/javascript" src="/reveal-js/plugin/notes/notes.js"></script>
+
+
+
+    <style>
+    #logo {
+        position: absolute;
+        top: 30px;
+        left: 20px;
+        width: 100%;
+    }
+</style>
+<div class="logo">
+    <img src="/img/LOGO-01.svg" alt="Created by Dr Eyal Soreq">
+</div>
+    
+<body>
+<style>
+    #logo {
+        position: absolute;
+        top: 90vmin;
+        left: 4vmin;
+        width: 20vmin;
+    }
+</style>
+<div id="logo">
+    <img src="/img/LOGO-01.svg" alt="Created by Dr Eyal Soreq">
+</div>
+</body>
+  </body>
+</html>
